@@ -1,3 +1,5 @@
+import '@lottiefiles/lottie-player';
+
 <template>
     <div>
       <h1>Hello, Vue!</h1>
@@ -13,4 +15,5 @@
   <style scoped>
   /* Your component styles here */
   </style>
+
   

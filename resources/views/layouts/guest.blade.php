@@ -8,10 +8,12 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="{{ asset('css/stylesheet01.css') }}">
-        
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
         <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
         
     </head>
     <body>
