@@ -141,7 +141,8 @@
         <h2>Forgot Password</h2>
         <p>If you’ve forgotten your password, enter your email below to receive a reset link.</p>
 
-        <form id="resetForm">
+        <form method="POST" action="{{ route('password.email') }}">
+            @csrf
             <div class="input-group">
                 <label for="email">Email Address</label>
                 <input id="email" type="email" name="email" required autofocus placeholder="example@domain.com"/>
@@ -153,31 +154,18 @@
 
         <button class="back-button" onclick="window.location.href='{{ route('login') }}'">Back to Login</button>
 
-        <div id="statusMessage" class="message">Password reset link sent successfully!</div>
+        <div id="statusMessage" class="message">
+            @if(session('status'))
+                <div class="message show">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            @if ($errors->has('email'))
+                <div class="error-message show">{{ $errors->first('email') }}</div>
+            @endif
+        </div>
     </div>
-
-    <script>
-        document.getElementById("resetForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const emailInput = document.getElementById("email");
-            const emailErrorDiv = document.getElementById("emailError");
-
-            if (emailInput.value.trim() === "") {
-                emailErrorDiv.classList.add("show");
-                return;
-            } else {
-                emailErrorDiv.classList.remove("show");
-            }
-
-            const messageDiv = document.getElementById("statusMessage");
-            messageDiv.classList.add("show");
-            emailInput.value = "";
-
-            setTimeout(() => {
-                messageDiv.classList.remove("show");
-            }, 3000);
-        });
-    </script>
 
 </body>
 </html>

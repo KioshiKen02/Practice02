@@ -3,6 +3,13 @@
 <head>
     <title>Login</title>
     <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: gray;
@@ -22,6 +29,18 @@
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
             overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .image-side {
@@ -42,6 +61,14 @@
             justify-content: center;
             text-align: center;
             border-radius: 12px;
+            opacity: 0;
+            animation: fadeInForm 0.6s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeInForm {
+            to {
+                opacity: 1;
+            }
         }
 
         h2 {
@@ -67,12 +94,13 @@
             border-radius: 8px;
             font-size: 16px;
             background-color: #fefefe;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, transform 0.3s ease;
         }
 
         input[type="email"]:focus, input[type="password"]:focus {
             border-color: #a83232;
             outline: none;
+            transform: scale(1.05);
         }
 
         button {
@@ -94,6 +122,7 @@
 
         button:hover {
             background-color: #b84242;
+            transform: scale(1.05);
         }
 
         button:active {
@@ -122,6 +151,14 @@
             margin-top: 10px;
             font-size: 14px;
             color: #555;
+            opacity: 0;
+            animation: fadeInLink 0.6s ease-out 0.6s forwards;
+        }
+
+        @keyframes fadeInLink {
+            to {
+                opacity: 1;
+            }
         }
 
         .forgot-password a {
