@@ -142,6 +142,6 @@ class CartController extends Controller
    public function checkout()
    {
        // Implement checkout logic here.
-       return redirect()->route('marketplace')->with('message', 'Checkout completed successfully!');
+       return redirect()->route('marketdash')->with('message', 'Checkout completed successfully!');
    }
 }
