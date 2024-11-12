@@ -13,7 +13,7 @@
  <body class="bg-gray-100">
   <header class="bg-gradient-to-r from-green-400 to-blue-500 shadow-lg">
     <div class="container mx-auto p-6 flex justify-between items-center">
-      <h1 class="text-3xl font-bold text-white">Anime Hub</h1>
+      <h1 class="text-3xl font-bold text-white"> <i class="fas fa-shopping-bag mr-2"> </i> Anime Hub</h1>
     </div>
   </header>
 
