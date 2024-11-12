@@ -11,9 +11,9 @@
   </style>
  </head>
  <body class="bg-gray-100">
-  <header class="bg-white shadow">
-    <div class="container mx-auto p-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-gray-800">Anime Hub</h1>
+  <header class="bg-gradient-to-r from-green-400 to-blue-500 shadow-lg">
+    <div class="container mx-auto p-6 flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-white">Anime Hub</h1>
     </div>
   </header>
 
@@ -95,11 +95,11 @@
         </tbody>
       </table>
 
-      <div class="mt-6 flex justify-between items-center">
-        <h2 class="text-xl font-semibold text-gray-800">Total: ₱{{ number_format($total, 2) }}</h2>
+      <div class="mt-6 flex items-center justify-end">
+        <h2 class="text-xl font-semibold text-gray-800 mr-4">Total: ₱{{ number_format($total, 2) }}</h2>
         <form action="{{ route('cart.checkout') }}" method="POST">
           @csrf
-          <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200">Checkout</button>
+          <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 mt-4">Checkout</button>
         </form>
       </div>
     @endif
