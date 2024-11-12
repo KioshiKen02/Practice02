@@ -14,6 +14,6 @@ Route::post('/marketplace/index', [CartController::class, 'add'])->name('cart.ad
 Route::get('/marketplace/show', [CartController::class, 'show'])->name('cart.show');
 
 // Separate routes for update, delete, and checkout
-Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-Route::post('/cart/delete', [CartController::class, 'delete'])->name('cart.delete');
+Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/delete/{itemId}', [CartController::class, 'delete'])->name('cart.delete');
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

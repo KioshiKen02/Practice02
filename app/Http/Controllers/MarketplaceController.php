@@ -13,9 +13,8 @@ class MarketplaceController extends Controller
     {
        
         $products = Product::all();  // Retrieve all products from the database
-       
-        // Ensure products are passed to the view
-        return view('marketdash', compact('products'));
+        $cartQuantity = Cart::where('users_id', auth()->id())->sum('quantity'); 
+        return view('marketdash', compact('products', 'cartQuantity'));
     }
 
 
