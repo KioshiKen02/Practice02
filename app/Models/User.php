@@ -21,7 +21,24 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin', // Add this line
     ];
+    
+    // You can also add an accessor for convenience
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    public function cart()
+    {
+    return $this->hasOne(Cart::class);
+    }
+
+    public function transactions()
+    {
+    return $this->hasMany(Transaction::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +58,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    
 }

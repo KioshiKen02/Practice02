@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +20,6 @@ Route::get('/', function () {
     return redirect('login');  // Redirect root to login page
 });
 
-
-
 // Authenticated user profile routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,12 +29,21 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/user/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//route for main dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+//route for anime dashboard
 Route::get('/anime', function () {
     return view('anime');
 })->name('anime');
+
+//route for marketpalce dashboard
+Route::get('/marketdash', function () {
+    return view('marketdash');
+})->name('marketdash');
+
+
 
 require __DIR__.'/auth.php';

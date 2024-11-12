@@ -15,6 +15,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    
+
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>

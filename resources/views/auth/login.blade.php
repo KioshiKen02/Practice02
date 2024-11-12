@@ -80,7 +80,7 @@
         label {
             display: flex;
             margin-bottom: 20px;
-            margin-left: 80px;
+            margin-left: 90px;
             font-weight: bold;
             color: #a83232;
             font-size: 16px;
