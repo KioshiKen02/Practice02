@@ -84,7 +84,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('profile.edit')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('profile.edit'))]); ?>
-                            <i class="fas fa-user mr-2"></i><?php echo e(__('Profile')); ?>
+                            <i class="fas fa-user-tie mr-2"></i><?php echo e(__('Profile')); ?>
 
                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

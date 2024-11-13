@@ -33,7 +33,7 @@
                     <x-slot name="content">
                         <!-- Profile Link -->
                         <x-dropdown-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                            <i class="fas fa-user mr-2"></i>{{ __('Profile') }}
+                            <i class="fas fa-user-tie mr-2"></i>{{ __('Profile') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('marketplace.create')" :active="request()->routeIs('marketplace.create')">
                             <i class="fas fa-plus mr-2"></i>{{ __('Sell Item') }}

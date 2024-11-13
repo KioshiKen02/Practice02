@@ -147,7 +147,7 @@ class CartController extends Controller
     // Delete the cart item
     $cartItem->delete();
 
-    return redirect()->route('marketdash')->with('message', 'Item removed from cart.');
+    return redirect()->route('cart.show')->with('message', 'Item removed from cart.');
     }
 
 
