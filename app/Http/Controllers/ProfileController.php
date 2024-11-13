@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -40,7 +42,7 @@ class ProfileController extends Controller
         // Save the updated user data
         $user->save();
 
-        return Redirect::route('profile.edit')->with('status', 'Profile updated successfully!');
+        return Redirect::route('dashboard')->with('status', 'Profile updated successfully!');
     }
 
     /**
@@ -107,4 +109,28 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+
+    public function updatePassword(Request $request)
+    {
+        // Validate the input
+        $validated = $request->validate([
+            'current_password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'], // 'confirmed' ensures the new password matches the confirmation
+        ]);
+
+        // Check if the current password is correct
+        if (!Hash::check($request->current_password, Auth::user()->password)) {
+            return back()->with('error', 'The current password is incorrect.');
+        }
+
+        // Update the password
+        Auth::user()->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Redirect back with success message
+        return back()->with('success', 'Password updated successfully.');
+    }
+
 }

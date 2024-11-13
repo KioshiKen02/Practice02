@@ -12,6 +12,7 @@ Route::post('/marketplace/store', [MarketplaceController::class, 'store'])->name
 // Cart Routes
 Route::post('/marketplace/index', [CartController::class, 'add'])->name('cart.add');
 Route::get('/marketplace/show', [CartController::class, 'show'])->name('cart.show');
+Route::get('/marketplace/show_pop', [CartController::class, 'showPop'])->name('cart.show.pop');
 
 // Separate routes for update, delete, and checkout
 Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');

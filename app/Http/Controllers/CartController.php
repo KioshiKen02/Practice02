@@ -76,6 +76,21 @@ class CartController extends Controller
 
     }
 
+    public function showPop()
+    {
+    // Retrieve cart items for the authenticated user with the associated product data
+    $cartItems = Cart::where('users_id', auth()->id())->with('product')->get(); // Filter by user and eager load the product
+
+    // Calculate the total cost of items in the cart
+    $total = $cartItems->reduce(function ($carry, $item) {
+    return $carry + ($item->product->price * $item->quantity);
+    }, 0);
+
+    // Return the cart view with cart items and total cost
+    return view('marketplace.show_pop', compact('cartItems', 'total'));
+
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    // Update quantity of an item in the cart

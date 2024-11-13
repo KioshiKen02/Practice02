@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/avatar/update', [ProfileController::class, 'updateAvatar'])->name('avatar.update');
     Route::post('/profile/avatar/remove', [ProfileController::class, 'removeAvatar'])->name('avatar.remove');
     Route::delete('/user/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::put('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('pass.update');
+
 });
 
 //route for main dashboard
@@ -43,6 +45,7 @@ Route::get('/anime', function () {
 Route::get('/marketdash', function () {
     return view('marketdash');
 })->name('marketdash');
+
 
 
 
