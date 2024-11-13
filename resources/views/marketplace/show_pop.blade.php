@@ -1,14 +1,16 @@
 <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg">
-    <div class=" flex items-center justify-between">
+    <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-gray-800 flex items-center space-x-2 mb-6">
             <i class="fas fa-shopping-cart text-blue-500"></i> <!-- Cart Icon -->
             <span>Your Cart</span>
         </h1>
         
+        @if(!$cartItems->isEmpty())
         <a href="{{ route('cart.show') }}" class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-md flex items-center space-x-2">
-        <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
             <span>Edit Your Cart</span>
         </a>
+        @endif
     </div>
 
     @if(session('message'))
@@ -69,20 +71,16 @@
         </h2>
         
       </div>
-    @endif
 
-    <!-- Buttons (Back to Marketplace and View Your Cart) -->
-    <div class="mt-6 flex items-center justify-between">
-      <a href="{{ route('marketdash') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-md flex items-center space-x-2">
-        <i class="fas fa-arrow-left"></i> <!-- Back Arrow Icon -->
-        <span>Back to Marketplace</span>
-      </a>
-      <form action="{{ route('cart.checkout') }}" method="POST">
-          @csrf
-          <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 flex items-center space-x-2">
-            <span>Checkout</span>
-            <i class="fas fa-arrow-right"></i> <!-- Check Icon -->
-          </button>
-      </form>
-    </div>
+      <!-- Buttons (Back to Marketplace and View Your Cart) -->
+      <div class="mt-6 flex items-center justify-end">
+        <form action="{{ route('cart.checkout') }}" method="POST">
+            @csrf
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 flex items-center space-x-2">
+              <span>Checkout</span>
+              <i class="fas fa-arrow-right"></i> <!-- Check Icon -->
+            </button>
+        </form>
+      </div>
+    @endif
 </div>

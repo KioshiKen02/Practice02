@@ -1,14 +1,16 @@
 <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg">
-    <div class=" flex items-center justify-between">
+    <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-gray-800 flex items-center space-x-2 mb-6">
             <i class="fas fa-shopping-cart text-blue-500"></i> <!-- Cart Icon -->
             <span>Your Cart</span>
         </h1>
         
+        <?php if(!$cartItems->isEmpty()): ?>
         <a href="<?php echo e(route('cart.show')); ?>" class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-md flex items-center space-x-2">
-        <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
             <span>Edit Your Cart</span>
         </a>
+        <?php endif; ?>
     </div>
 
     <?php if(session('message')): ?>
@@ -71,21 +73,17 @@
         </h2>
         
       </div>
-    <?php endif; ?>
 
-    <!-- Buttons (Back to Marketplace and View Your Cart) -->
-    <div class="mt-6 flex items-center justify-between">
-      <a href="<?php echo e(route('marketdash')); ?>" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-md flex items-center space-x-2">
-        <i class="fas fa-arrow-left"></i> <!-- Back Arrow Icon -->
-        <span>Back to Marketplace</span>
-      </a>
-      <form action="<?php echo e(route('cart.checkout')); ?>" method="POST">
-          <?php echo csrf_field(); ?>
-          <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 flex items-center space-x-2">
-            <span>Checkout</span>
-            <i class="fas fa-arrow-right"></i> <!-- Check Icon -->
-          </button>
-      </form>
-    </div>
+      <!-- Buttons (Back to Marketplace and View Your Cart) -->
+      <div class="mt-6 flex items-center justify-end">
+        <form action="<?php echo e(route('cart.checkout')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 flex items-center space-x-2">
+              <span>Checkout</span>
+              <i class="fas fa-arrow-right"></i> <!-- Check Icon -->
+            </button>
+        </form>
+      </div>
+    <?php endif; ?>
 </div>
 <?php /**PATH C:\laragon\www\Practice02\resources\views/marketplace/show_pop.blade.php ENDPATH**/ ?>
