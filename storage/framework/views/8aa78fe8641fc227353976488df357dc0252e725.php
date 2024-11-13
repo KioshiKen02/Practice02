@@ -74,11 +74,11 @@
         
       </div>
 
-      <!-- Buttons (View Your Cart) -->
+      <!-- Buttons (Back to Marketplace and View Your Cart) -->
       <div class="mt-6 flex items-center justify-end">
-        <form action="<?php echo e(route('checkout.show')); ?>">
+        <form action="<?php echo e(route('cart.checkout')); ?>" method="POST">
             <?php echo csrf_field(); ?>
-            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 transform hover:scale-105">
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 flex items-center space-x-2">
               <span>Checkout</span>
               <i class="fas fa-arrow-right"></i> <!-- Check Icon -->
             </button>
