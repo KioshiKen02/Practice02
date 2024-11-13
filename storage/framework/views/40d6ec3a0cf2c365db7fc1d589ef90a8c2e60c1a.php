@@ -103,7 +103,7 @@
       <!-- Cart Total and Checkout -->
       <div class="mt-6 flex items-center justify-end">
         <h2 class="text-xl font-semibold text-gray-800 mr-4">Total: ₱<?php echo e(number_format($total, 2)); ?></h2>
-        <form action="<?php echo e(route('cart.checkout')); ?>" method="POST">
+        <form action="<?php echo e(route('checkout.show')); ?>" method="POST">
           <?php echo csrf_field(); ?>
           <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 mt-4">
             <i class="fas fa-credit-card"></i> Checkout
