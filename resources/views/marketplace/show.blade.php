@@ -11,30 +11,33 @@
   </style>
  </head>
  <body class="bg-gray-100">
+  <!-- Header -->
   <header class="bg-gradient-to-r from-green-400 to-blue-500 shadow-lg">
     <div class="container mx-auto p-6 flex justify-between items-center">
-      <h1 class="text-3xl font-bold text-white"> <i class="fas fa-shopping-bag mr-2"> </i> Anime Hub</h1>
+      <h1 class="text-3xl font-bold text-white"><i class="fas fa-shopping-bag mr-2"></i>Anime Hub</h1>
     </div>
   </header>
 
+  <!-- Cart Container -->
   <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg mt-6">
-    <h1 class="text-3xl font-bold mb-6 text-gray-800">Your Cart</h1>
+    <h1 class="text-3xl font-bold mb-6 text-gray-800"><i class="fas fa-shopping-cart mr-2"></i>Your Cart</h1>
 
+    <!-- Messages -->
     @if(session('message'))
     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6">
-      {{ session('message') }}
+      <i class="fas fa-check-circle mr-2"></i>{{ session('message') }}
+    </div>
+    @endif
+    @if(session('error'))
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6">
+      <i class="fas fa-exclamation-circle mr-2"></i>{{ session('error') }}
     </div>
     @endif
 
-  @if(session('error'))
-    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6">
-      {{ session('error') }}
-    </div>
-  @endif
-
+    <!-- Cart Items -->
     @if($cartItems->isEmpty())
       <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6">
-        Your cart is empty.
+        <i class="fas fa-exclamation-triangle mr-2"></i>Your cart is empty.
       </div>
     @else
       <table class="min-w-full table-auto border-collapse">
@@ -57,7 +60,7 @@
                   </div>
                   <div>
                     <h2 class="text-lg font-semibold">{{ $item->product->name }}</h2>
-                    <p class="text-gray-500">Available: {{ $item->product->quantity }}</p>
+                    <p class="text-gray-500"><i class="fas fa-cubes mr-1"></i>Available: {{ $item->product->quantity }}</p>
                   </div>
                 </div>
               </td>
@@ -75,7 +78,7 @@
                     required
                   >
                   <button type="submit" class="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300">
-                    Update
+                    <i class="fas fa-sync-alt"></i> Update
                   </button>
                 </form>
               </td>
@@ -84,9 +87,9 @@
               <td class="px-6 py-4">
                 <form action="{{ route('cart.delete', $item->id) }}" method="POST">
                     @csrf
-                    @method('DELETE') <!-- This simulates the DELETE HTTP method -->
-                    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg">
-                         Delete
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-300">
+                         <i class="fas fa-trash"></i> Delete
                     </button>
                 </form>
               </td>
@@ -95,23 +98,27 @@
         </tbody>
       </table>
 
+      <!-- Cart Total and Checkout -->
       <div class="mt-6 flex items-center justify-end">
         <h2 class="text-xl font-semibold text-gray-800 mr-4">Total: ₱{{ number_format($total, 2) }}</h2>
         <form action="{{ route('cart.checkout') }}" method="POST">
           @csrf
-          <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 mt-4">Checkout</button>
+          <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 mt-4">
+            <i class="fas fa-credit-card"></i> Checkout
+          </button>
         </form>
       </div>
     @endif
 
-    <!-- Back Button (Redirects to Marketplace Page) -->
-    <div class="mt-6">
-      <a href="{{ route('marketdash') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-md">
-        <i class="fas fa-arrow-left mr-2"></i> Back to Marketplace
+    <!-- Back to Marketplace Button -->
+    <div class="mt-6 flex items-center justify-end">
+      <a href="{{ route('marketdash') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-md flex items-center space-x-2 transition duration-200">
+        <i class="fas fa-arrow-left"></i><span>Back to Marketplace</span>
       </a>
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="bg-white shadow mt-8">
     <div class="container mx-auto p-4 text-center">
       <p class="text-gray-700">© 2024 Marketplace. All rights reserved.</p>
