@@ -83,4 +83,4 @@
       </div>
     <?php endif; ?>
 </div>
-<?php /**PATH C:\laragon\www\Practice02\resources\views/marketplace/show_pop.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\Practice02\resources\views\marketplace\show_pop.blade.php ENDPATH**/ ?>
