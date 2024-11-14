@@ -27,18 +27,6 @@
 
 </head>
 <body class="font-sans antialiased bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-gray-800">
-@if(session('error'))
-    <div class="bg-red-500 text-white p-4 rounded-lg mb-4">
-        <strong class="font-semibold">Error: </strong>{{ session('error') }}
-    </div>
-@endif
-
-@if(session('success'))
-    <div class="bg-green-500 text-white p-4 rounded-lg mb-4">
-        <strong class="font-semibold">Success: </strong>{{ session('success') }}
-    </div>
-@endif
-
     <div class="min-h-screen flex flex-col">
 
         <!-- Navigation -->

@@ -38,6 +38,9 @@
                         <x-dropdown-link :href="route('marketplace.create')" :active="request()->routeIs('marketplace.create')">
                             <i class="fas fa-plus mr-2"></i>{{ __('Sell Item') }}
                         </x-dropdown-link>
+                        <x-dropdown-link :href="route('marketplace.dashboard')" :active="request()->routeIs('marketplace.dashboard')">
+                            <i class="fas fa-edit mr-2"></i>{{ __('Edit Sell Items') }}
+                        </x-dropdown-link>
 
                         <!-- Admin Access Link (Only visible to admin) -->
                         @if(Auth::check() && Auth::user()->is_admin)

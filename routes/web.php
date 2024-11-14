@@ -47,6 +47,4 @@ Route::get('/marketdash', function () {
 })->name('marketdash');
 
 
-
-
 require __DIR__.'/auth.php';

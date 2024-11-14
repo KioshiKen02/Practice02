@@ -27,20 +27,6 @@
 
 </head>
 <body class="font-sans antialiased bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-gray-800">
-<?php if(session('error')): ?>
-    <div class="bg-red-500 text-white p-4 rounded-lg mb-4">
-        <strong class="font-semibold">Error: </strong><?php echo e(session('error')); ?>
-
-    </div>
-<?php endif; ?>
-
-<?php if(session('success')): ?>
-    <div class="bg-green-500 text-white p-4 rounded-lg mb-4">
-        <strong class="font-semibold">Success: </strong><?php echo e(session('success')); ?>
-
-    </div>
-<?php endif; ?>
-
     <div class="min-h-screen flex flex-col">
 
         <!-- Navigation -->
