@@ -12,7 +12,7 @@
             <div class="bg-white shadow-sm sm:rounded-lg mb-8">
                 <div class="p-6 border-b border-gray-200">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-                        <i class="fas fa-shopping-cart text-blue-500"></i> <!-- Cart Icon -->
+                        <i class="fa-solid fa-shopping-cart text-blue-500"></i> <!-- Cart Icon -->
                         <span> Your Cart</span>
                     </h3>
                     @php
@@ -61,7 +61,7 @@
                                     <i class="fa-solid fa-home text-indigo-600 mr-2"></i>
                                     House No.
                                 </label>
-                                <input id="house_no" name="house_no" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., 123" />
+                                <input id="house_no" name="house_no" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., 123" value="{{ old('house_no', $defaultAddress['default_house_no'] ?? '') }}" />
                                 @error('house_no')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -73,7 +73,7 @@
                                     <i class="fa-solid fa-road text-indigo-600 mr-2"></i>
                                     Street
                                 </label>
-                                <input id="street" name="street" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Main Street" />
+                                <input id="street" name="street" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Main Street" value="{{ old('street', $defaultAddress['default_street'] ?? '') }}" />
                                 @error('street')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -85,7 +85,7 @@
                                     <i class="fa-solid fa-map-marker-alt text-indigo-600 mr-2"></i>
                                     Barangay
                                 </label>
-                                <input id="barangay" name="barangay" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Barangay 1" />
+                                <input id="barangay" name="barangay" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Barangay 1" value="{{ old('barangay', $defaultAddress['default_barangay'] ?? '') }}" />
                                 @error('barangay')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -97,7 +97,7 @@
                                     <i class="fa-solid fa-city text-indigo-600 mr-2"></i>
                                     Municipality
                                 </label>
-                                <input id="municipality" name="municipality" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Quezon City" />
+                                <input id="municipality" name="municipality" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Quezon City" value="{{ old('municipality', $defaultAddress['default_municipality'] ?? '') }}" />
                                 @error('municipality')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -109,11 +109,17 @@
                                     <i class="fa-solid fa-globe text-indigo-600 mr-2"></i>
                                     Province
                                 </label>
-                                <input id="province" name="province" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Metro Manila" />
+                                <input id="province" name="province" type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="e.g., Metro Manila" value="{{ old('province', $defaultAddress['default_province'] ?? '') }}" />
                                 @error('province')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
+                        </div>
+
+                        <!-- Save as Default Address -->
+                        <div class="flex items-center space-x-2 mt-4">
+                            <input type="checkbox" id="save_as_default" name="save_as_default" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                            <label for="save_as_default" class="text-gray-700">Save this address as default</label>
                         </div>
 
                         <!-- Payment Method -->
@@ -137,7 +143,7 @@
                         <!-- Submit Button -->
                         <div class="mt-4 flex justify-end">
                             <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300" aria-label="Complete Order">
-                                Complete Order
+                                Place Order
                             </button>
                         </div>
                     </form>

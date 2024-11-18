@@ -22,6 +22,11 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin', // Add this line
+        'default_house_no',
+        'default_street',
+        'default_barangay',
+        'default_municipality',
+        'default_province',
     ];
     
     // You can also add an accessor for convenience

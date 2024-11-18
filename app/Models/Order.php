@@ -9,8 +9,21 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'users_id','house_no','street','barangay','municipality','province', 'payment_method', 'order_status', // Add this line
-        // Add other attributes here as needed, like:
-        // 'shipping_address', 'payment_method', etc.
+    protected $fillable = [
+        'users_id',
+        'house_no',
+        'street',
+        'barangay',
+        'municipality',
+        'province',
+        'payment_method',
+        'order_status',
+        'reference_number', // Add this line
     ];
+    // Order.php
+    public function orderItems()
+    {
+    return $this->hasMany(OrderItem::class);
+    }
+
 }

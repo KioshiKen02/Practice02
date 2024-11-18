@@ -7,6 +7,8 @@ use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\TransactionsController;
+
 
 // Routes for admin-only access
 Route::middleware('admin')->group(function () {
@@ -39,3 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/marketplace/preview', [CheckoutController::class, 'storeShippingInfo'])->name('checkout.storeShipping');
     Route::get('/checkout/complete', [CheckoutController::class, 'completeOrder'])->name('marketplace.complete');
 });
+
+Route::get('/marketplace/transaction/{referenceNumber}', [CheckoutController::class, 'transactionDetails'])
+    ->name('marketplace.transactionDetails')
+    ->middleware('auth');
+    
+Route::get('/transactions/details', [TransactionsController::class, 'index'])->name('transaction.details');

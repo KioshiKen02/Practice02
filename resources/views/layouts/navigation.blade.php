@@ -34,7 +34,13 @@
                         <!-- Profile Link -->
                         <x-dropdown-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                             <i class="fas fa-user-tie mr-2"></i>{{ __('Profile') }}
+                        </x-dropdown-link> 
+
+                        <!-- Transaction Details -->
+                        <x-dropdown-link :href="route('transaction.details')" :active="request()->routeIs('transaction.details')">
+                            <i class="fas fa-cash-register mr-2"></i>{{ __('Transaction Details') }}
                         </x-dropdown-link>
+                        
 
                         <!-- Admin Access Link (Only visible to admin) -->
                         @if(Auth::check() && Auth::user()->is_admin)

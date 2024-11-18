@@ -30,8 +30,10 @@ $maxWidth = [
     x-data="{
         show: <?php echo \Illuminate\Support\Js::from($show)->toHtml() ?>,
         focusables() {
+            // All focusable element types...
             let selector = 'a, button, input:not([type=\'hidden\']), textarea, select, details, [tabindex]:not([tabindex=\'-1\'])'
             return [...$el.querySelectorAll(selector)]
+                // All non-disabled elements...
                 .filter(el => ! el.hasAttribute('disabled'))
         },
         firstFocusable() { return this.focusables()[0] },
@@ -76,22 +78,14 @@ $maxWidth = [
 
     <div
         x-show="show"
-        class="bg-white rounded-lg overflow-hidden shadow-md transform transition-all w-full max-w-md mx-auto p-4"
+        class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full <?php echo e($maxWidth); ?> sm:mx-auto"
         x-transition:enter="ease-out duration-300"
-        x-transition:enter-start="opacity-0 translate-y-2 sm:translate-y-0 sm:scale-95"
+        x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
-        x-transition:leave-end="opacity-0 translate-y-2 sm:translate-y-0 sm:scale-95"
+        x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
     >
-       <!-- Close button positioned at the top-right -->
-        <button
-            x-on:click="show = false"
-            class="absolute top-0 right-0 m-4 text-gray-500 hover:text-gray-700"
-        >
-            &times;
-        </button>
-        
         <?php echo e($slot); ?>
 
     </div>

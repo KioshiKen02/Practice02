@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->enum('payment_method', ['COD','Bank Transfer', 'Credit Card','Debit Card','Check']); // Choose payment options
             $table->enum('order_status', ['pending', 'shipped', 'delivered','cancelled', 'refunded', 'returned',]); // Choose order status options
+            $table->string('reference_number')->unique();
             $table->timestamps();
         });
     }

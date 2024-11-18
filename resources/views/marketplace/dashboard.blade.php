@@ -18,6 +18,13 @@
             </div>
         @endif
 
+        @if(session('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-6 py-3 rounded-lg mb-8 text-center">
+                <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
+        @endif
+
+
         <div class="overflow-x-auto bg-gray-900 shadow-xl rounded-lg">
             <table class="min-w-full table-auto text-gray-100">
                 <thead class="bg-gray-700 text-white">

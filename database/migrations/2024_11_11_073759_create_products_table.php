@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 8, 2);
             $table->integer('quantity');
             $table->string('image');
+            $table->string('status')->default('In Stock'); // Default status is "In Stock"
             $table->unsignedBigInteger('users_id'); // Make sure this is 'user_id'
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

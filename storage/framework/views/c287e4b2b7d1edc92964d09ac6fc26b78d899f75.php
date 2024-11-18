@@ -1,5 +1,7 @@
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marketplace</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
@@ -11,7 +13,9 @@
   </style>
 </head>
 <body class="bg-gray-100">
-<?php if(session('message')): ?>
+
+  <!-- Success/Error Notification -->
+  <?php if(session('message')): ?>
     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6">
       <?php echo e(session('message')); ?>
 
@@ -23,7 +27,7 @@
       <?php echo e(session('error')); ?>
 
     </div>
-<?php endif; ?>
+  <?php endif; ?>
 
   <!-- Header Section -->
   <header class="bg-white shadow p-4 mb-6">
@@ -32,7 +36,7 @@
         <?php echo e(__('Anime Merchandise')); ?>
 
       </h2>
-    
+
       <!-- Cart Button with Notification Badge -->
       <a href="javascript:void(0)" onclick="openCartModal()" class="relative bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded-full inline-flex items-center transition duration-300">
         <i class="fas fa-shopping-cart mr-2"></i> Cart
@@ -50,7 +54,17 @@
         <img src="<?php echo e(asset('storage/' . $product->image)); ?>" alt="<?php echo e($product->name); ?>" class="w-full h-48 object-cover rounded-lg mb-4">
         <h2 class="text-lg font-semibold text-gray-800"><?php echo e($product->name); ?></h2>
         <p class="text-gray-600 mt-2 mb-4"><?php echo e(Str::limit($product->description, 60)); ?></p>
-        <p class="text-sm text-gray-500 mb-2">Available: <?php echo e($product->quantity); ?></p>
+
+        <!-- Availability text -->
+        <p class="text-sm text-gray-500 mb-2">
+          <?php if($product->quantity > 0): ?>
+            Available: <?php echo e($product->quantity); ?>
+
+          <?php else: ?>
+            <span class="text-red-600 font-bold">Out of Stock</span>
+          <?php endif; ?>
+        </p>
+
         <p class="text-xl font-bold text-green-600">₱<?php echo e(number_format($product->price, 2)); ?></p>
 
         <!-- Add to Cart Form -->
@@ -66,6 +80,7 @@
               min="1" 
               max="<?php echo e($product->quantity); ?>" 
               required
+              <?php if($product->quantity <= 0): ?> disabled <?php endif; ?>
             >
             <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300 w-full" 
@@ -78,8 +93,8 @@
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </div>
 
-<!-- Cart Modal -->
-<div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+  <!-- Cart Modal -->
+  <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
     <div class="bg-white rounded-lg p-8 w-3000">
       <div class="flex justify-between items-center mb-4">
         <button onclick="closeCartModal()" class="text-gray-600 ml-auto">
@@ -94,19 +109,19 @@
 
   <script>
     function openCartModal() {
-    // Make an AJAX request to load the cart content
-    fetch("<?php echo e(route('cart.show.pop')); ?>")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('cartContents').innerHTML = data;
-        document.getElementById('cartModal').classList.remove('hidden');
-      })
-      .catch(error => console.error('Error:', error));
-  }
+      // Make an AJAX request to load the cart content
+      fetch("<?php echo e(route('cart.show.pop')); ?>")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('cartContents').innerHTML = data;
+          document.getElementById('cartModal').classList.remove('hidden');
+        })
+        .catch(error => console.error('Error:', error));
+    }
 
-  function closeCartModal() {
-    document.getElementById('cartModal').classList.add('hidden');
-  }
+    function closeCartModal() {
+      document.getElementById('cartModal').classList.add('hidden');
+    }
   </script>
 </body>
 </html>
